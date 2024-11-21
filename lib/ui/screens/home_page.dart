@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
 
-  String _meteoReport;
+  String? _meteoReport;
 
   Future<void> recuperaMeteo() async{
     setState(() {
@@ -36,7 +36,7 @@ class _HomePage extends State<HomePage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
       ElevatedButton(
-      onPressed: _caricaMeteo,
+      onPressed: recuperaMeteo,
       child: const Text('Mostra il meteo'),
     ),
     const SizedBox(height: 20),
@@ -47,7 +47,7 @@ class _HomePage extends State<HomePage> {
           )
         else
           Text(
-            _meteoReport,
+            "$_meteoReport",
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 16),
           ),
