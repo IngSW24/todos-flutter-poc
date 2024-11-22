@@ -13,28 +13,19 @@ class OpenWeather {
   *(vedi in fondo file per esempio struttura json
   * */
   static Future<Map<String, dynamic>> recuperaMeteo() async {
-    final String url = '$baseUrl?q=$citta&appid=$apiKey&units=metric&lang=it';
+    const String url = '$baseUrl?q=$citta&appid=$apiKey&units=metric&lang=it';
+    final response = await http.get(Uri.parse(url));
 
-    try {
-      final response = await http.get(Uri.parse(url));
-
-      if (response.statusCode == 200) {
-        return json.decode(response.body);
-      } else {
-        throw Exception('Errore API: ${response.statusCode}');
-      }
-    } catch (e) {
-      throw Exception('Errore nella richiesta: $e');
-    }
+    return json.decode(response.body);
   }
 
-  /* ES JSON ritornato (I capi a noi rilevanti)
+  /* ES JSON ritornato (I campi a noi rilevanti)
   * {
   "weather": [
     {
       "id": 800,
       "main": "Clear",
-      "description": "ceilo sereno",
+      "description": "cielo sereno",
     }
   ],
   "main": {
@@ -49,7 +40,8 @@ class OpenWeather {
     "speed": 3.09,
     "deg": 90
   },
-  "name": "Pordenone"
+  "name": "Pordenone",
+  "cod" : 200 o 404 o ...
 }
  */
 }
