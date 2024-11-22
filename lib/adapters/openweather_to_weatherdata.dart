@@ -1,7 +1,11 @@
-class AdattatoreMeteo {
+import 'package:todos_flutter_poc/adapters/service_adapter.dart';
+import 'package:todos_flutter_poc/services/openweather_get_pn.dart';
+
+class AdattatoreMeteo implements ServiceAdapter {
+  const AdattatoreMeteo();
 
   // Metodo che converte ""adatta"" il JSON a una stringa di riepilogo meteo
-  static String generaRiepilogoMeteo(Map<String, dynamic> meteoJson) {
+  static String _generaRiepilogoMeteo(Map<String, dynamic> meteoJson) {
 
       final descrizione = meteoJson['weather']?[0]?['description'] ?? 'N/A';
       final temperatura = meteoJson['main']?['temp']?.toStringAsFixed(1) ?? 'N/A';
@@ -26,5 +30,10 @@ class AdattatoreMeteo {
       }else{
         return "Non è stato possibile recuperare i dati meteo";
       }
+  }
+
+  @override
+  Future<String> getWeather() async {
+    return _generaRiepilogoMeteo(await OpenWeather.recuperaMeteo());
   }
 }
