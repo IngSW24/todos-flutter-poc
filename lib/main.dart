@@ -23,7 +23,7 @@ final myRouter = GoRouter(
     routes: [
       GoRoute(
           path: '/',
-          builder: (ctx, state) => HomePage('Hello'),
+          builder: (ctx, state) => const HomePage('Hello'),
           routes: [
             GoRoute(path: 'page1',
             builder: (ctx, state) => const Page1())

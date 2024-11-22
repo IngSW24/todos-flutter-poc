@@ -4,25 +4,22 @@ import 'package:todos_flutter_poc/adapters/service_adapter.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage(this.title, {super.key, this.serviceAdapter = const AdattatoreMeteo()});
+  const HomePage(this.title, {super.key, this.serviceAdapter = const AdattatoreMeteo()});
 
   final String title;
   final ServiceAdapter serviceAdapter;
 
   @override
-  State<HomePage> createState() => _HomePage(serviceAdapter);
+  State<HomePage> createState() => _HomePage();
 }
 
 class _HomePage extends State<HomePage> {
-  _HomePage(this.serviceAdapter);
-  final ServiceAdapter serviceAdapter;
   String? _meteoReport;
 
   Future<void> _recuperaMeteo() async {
-    var meteo = await serviceAdapter.getWeather();
+    var meteo = await widget.serviceAdapter.getWeather();
     
     setState(() {
-      //Chiamre OpenWeather e l'adapter per recuperare il report
       _meteoReport = meteo;
     });
   }
