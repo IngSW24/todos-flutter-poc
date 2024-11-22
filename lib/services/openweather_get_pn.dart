@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 class OpenWeather {
   //API Key: NON superare le  1000/gg chiamate
   static const String apiKey = '8bc79b7037ec041a3a93def986e05d14';
-  static const String citta = 'Pordenonee';
-  static const String baseUrl = 'hhttps://api.openweathermap.org/data/2.5/weather';
+  static const String citta = 'Pordenone';
+  static const String baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
   /*
   * Ritorna una mappa dart che rappresenta i dati JSON del meteo
