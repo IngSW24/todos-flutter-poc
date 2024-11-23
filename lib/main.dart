@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
 final myRouter = GoRouter(
     routes: [
       GoRoute(
-          path: '/',
-          builder: (ctx, state) => const HomePage('Hello'),
-          routes: [
-            GoRoute(path: 'page1',
-            builder: (ctx, state) => const Page1())
-          ]
+        path: '/',
+        builder: (ctx, state) => const HomePage('Hello'),
+        routes: [
+          GoRoute(path: 'page1',
+          builder: (ctx, state) => const Page1())
+        ]
       )
     ]
 );

@@ -15,7 +15,6 @@ class AdattatoreMeteo implements ServiceAdapter {
       final umidita = meteoJson['main']?['humidity']?.toString() ?? 'N/A';
       final cod = meteoJson['cod']?.toString() ?? "N/A";
 
-
       if(cod == "200"){
 
         //Stringa di riepilogo
@@ -34,6 +33,10 @@ class AdattatoreMeteo implements ServiceAdapter {
 
   @override
   Future<String> getWeather() async {
-    return _generaRiepilogoMeteo(await OpenWeather.recuperaMeteo());
+    try {
+      return _generaRiepilogoMeteo(await OpenWeather.recuperaMeteo());
+    } catch (e) {
+      return "Errore di rete";
+    }
   }
 }

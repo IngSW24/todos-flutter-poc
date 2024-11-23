@@ -44,7 +44,10 @@ class _HomePage extends State<HomePage> {
                 onPressed: _recuperaMeteo,
                 child: const Text('Mostra il meteo'),
               ),
-              TextButton(onPressed: () => context.go("/page1"), child: const Text("Go to page1"))
+              TextButton(
+                  onPressed: () => context.go("/page1"),
+                  child: const Text("Go to page1")
+              )
             ],
           ),
           const SizedBox(height: 60),
